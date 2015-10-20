@@ -1,5 +1,5 @@
 <?php
-    $myArray = ['Bob','Tom','Bill'];
+    
 
     class selectMenu {
         private $items;  // array of items.
@@ -10,8 +10,8 @@
             $this->items = $itemArray;
         }
 
-        private function buildOptions() {
-            $this->options = "<option value=''>Select a Name</option>";
+        private function buildOptions($caption) {
+            $this->options = "<option value=''>". $caption . "</option>";
             forEach($this->items as $item) {
                 $this->options .= "<option value='"
                 . $item . "'>"
@@ -19,22 +19,22 @@
             }
         }
 
-        private function buildSelect() {
-            $this->selectMenu = "<select>".$this->options."</select>";
+        private function buildSelect($name) {
+            $this->selectMenu = "<select name='". $name . "'>".$this->options."</select>";
         }
 
         public function setOptions($array) {
             $this->items = $array;
         }
 
-        public function makeMenu() {
-            $this->buildOptions();
-            $this->buildSelect();
+        public function makeMenu($caption, $name) {
+            $this->buildOptions($caption);
+            $this->buildSelect($name);
             return $this->selectMenu;
         }
     }
-
+/*$myArray = ['Ms.','Mr.','Mrs.', 'Undetermined'];
     $myMenu = new selectMenu;
     $myMenu->setOptions($myArray);
-    echo $myMenu->makeMenu();
+    echo $myMenu->makeMenu("Select a Title", "Title");*/
  ?>
